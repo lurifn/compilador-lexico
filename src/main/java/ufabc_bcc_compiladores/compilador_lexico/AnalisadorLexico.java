@@ -1,4 +1,4 @@
-package br.edu.ufabc.compv1;
+package ufabc_bcc_compiladores.compilador_lexico;
 
 import java.io.File;
 import java.nio.file.Files;
@@ -12,7 +12,9 @@ public class AnalisadorLexico {
 
     public AnalisadorLexico(String filename) {
         try {
-            byte[] bContent = Files.readAllBytes(new File(filename).toPath());
+            byte[] bContent = Files.readAllBytes(new File(
+            		getClass().getClassLoader().getResource(filename).getFile()
+            		).toPath());
             this.content = new String(bContent).toCharArray();
             this.pos = 0;
         } catch (IOException ex) {
