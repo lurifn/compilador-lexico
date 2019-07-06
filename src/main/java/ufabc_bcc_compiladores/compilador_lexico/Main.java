@@ -3,10 +3,12 @@ public class Main {
   public static void main(String[] args) {
       AnalisadorLexico l;
       l = new AnalisadorLexico("prog.in");
-      System.out.println(l.nextToken());
-      System.out.println(l.nextToken());
-      System.out.println(l.nextToken());
-      //System.out.println(l.nextToken());
+      
+      String token = l.nextToken().getText();
+      
+      while(token != null)
+      System.out.println(token);
+      token = l.nextToken().getText();
 
   }
 }

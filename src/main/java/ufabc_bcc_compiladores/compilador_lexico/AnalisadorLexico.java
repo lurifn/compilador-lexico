@@ -7,6 +7,7 @@ import java.io.IOException;
 public class AnalisadorLexico {
 
     private String[] reservedWords = {"programa","declare","escreva","leia"};
+    private String operadores = "\\+|\\-|\\*|\\/|(:=)";
     private char[] content;
     private int pos;
 
@@ -26,6 +27,14 @@ public class AnalisadorLexico {
     private boolean isReservedWord(String text){
         for (String s: reservedWords){
             if (text.equals(s)){
+                return true;
+            }
+        }
+        return false;
+    }
+    private boolean isOperador(String text){
+        for (String s: reservedWords){
+            if (text.matches(operadores)){
                 return true;
             }
         }
@@ -90,6 +99,8 @@ public class AnalisadorLexico {
                     } else if (isBlank(c)) {
                         if (isReservedWord(text))
                            return new Token(Token.RESERVERD_WORD, text);
+                        else if (isOperador(text))
+                            return new Token(Token.OPERATOR, text);
                         else
                             return new Token(Token.ID, text);
                     } else if (isOperator(c)) {
