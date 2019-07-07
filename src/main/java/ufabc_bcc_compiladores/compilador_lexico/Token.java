@@ -1,5 +1,7 @@
 package ufabc_bcc_compiladores.compilador_lexico;
 
+import ufabc_bcc_compiladores.compilador_lexico.enums.ETipoToken;
+
 public class Token {
 
     public static final int ID             = 0;
@@ -9,24 +11,24 @@ public class Token {
     public static final int RESERVERD_WORD = 4;
     public static final int PONTUACTION    = 5;
     
-    private int id;
+    private ETipoToken id;
     private String text;
 
     public Token() {
-        id = 0;
+        id = ETipoToken.CONTINUA;
         text = "";
     }
 
-    public Token(int id, String text) {
-        this.id = id;
+    public Token(ETipoToken tokenToReturn, String text) {
+        this.id = tokenToReturn;
         this.text = text;
     }
 
-    public int getId() {
+    public ETipoToken getId() {
         return this.id;
     }
 
-    public void setId(int id) {
+    public void setId(ETipoToken id) {
         this.id = id;
     }
 
